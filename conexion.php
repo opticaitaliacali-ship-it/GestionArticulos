@@ -1,9 +1,9 @@
 <?php
 
-$host = "localhost";
-$user = "root";
-$pass = "";
-$db   = "inventario";
+$host = "mysql-opticaitalia.alwaysdata.net";
+$user = "opticaitalia";
+$pass = "Samueldavid23";
+$db   = "opticaitalia_gestion_articulos";
 
 $conn = new mysqli($host, $user, $pass, $db);
 
