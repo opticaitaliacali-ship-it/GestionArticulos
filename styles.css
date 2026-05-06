@@ -1,0 +1,92 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI;
+}
+
+body{
+    background:#0f172a;
+    color:white;
+    padding:40px;
+}
+
+.container{
+    width:90%;
+    margin:auto;
+}
+
+h1{
+    text-align:center;
+    margin-bottom:30px;
+    color:#38bdf8;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:#1e293b;
+    border-radius:15px;
+    overflow:hidden;
+    margin-top:20px;
+}
+
+table th{
+    background:#38bdf8;
+    color:#0f172a;
+    padding:15px;
+}
+
+table td{
+    padding:15px;
+    text-align:center;
+    border-bottom:1px solid #334155;
+}
+
+.formulario{
+    width:400px;
+    margin:auto;
+    background:#1e293b;
+    padding:30px;
+    border-radius:15px;
+}
+
+.formulario input{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:none;
+    border-radius:10px;
+    background:#334155;
+    color:white;
+}
+
+.formulario button{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    background:#38bdf8;
+    color:#0f172a;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.btn{
+    padding:8px 15px;
+    border-radius:8px;
+    text-decoration:none;
+    color:white;
+}
+
+.nuevo{
+    background:#22c55e;
+}
+
+.editar{
+    background:#3b82f6;
+}
+
+.eliminar{
+    background:#ef4444;
+}
