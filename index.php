@@ -74,7 +74,7 @@ Editar
 
 <a class="btn eliminar"
 href="?eliminar=<?= $row['id'] ?>"
-onclick="return confirm('¿Eliminar artículo?')">
+onclick="return confirm('¿Quieres Eliminar artículo?')">
 Eliminar
 </a>
 
