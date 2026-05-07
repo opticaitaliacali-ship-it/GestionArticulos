@@ -1,25 +1,18 @@
 <?php
 include("conexion.php");
 
-/* =========================
-   ELIMINAR
-========================= */
-
 if(isset($_GET['eliminar'])){
 
     $id = $_GET['eliminar'];
 
-    $conn->query("DELETE FROM articulos WHERE id=$id");
+    $stmt = $conn->prepare("DELETE FROM articulos WHERE id=?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
 
     header("Location:index.php");
 }
 
-/* =========================
-   CONSULTAR ARTICULOS
-========================= */
-
 $resultado = $conn->query("SELECT * FROM articulos ORDER BY id DESC");
-
 ?>
 
 <!DOCTYPE html>
@@ -36,55 +29,79 @@ $resultado = $conn->query("SELECT * FROM articulos ORDER BY id DESC");
 
 <body>
 
+<div class="background"></div>
+
 <div class="container">
 
-<h1>📦 Gestión de Artículos</h1>
+    <div class="header">
 
-<a href="crear.php" class="btn nuevo">
-➕ Nuevo Artículo
-</a>
+        <div>
+            <h1>📦 Sistema Inventario</h1>
+            <p class="subtitulo">
+                Gestión moderna de artículos y bodegas
+            </p>
+        </div>
 
-<table>
+        <a href="crear.php" class="btn nuevo">
+            + Nuevo Artículo
+        </a>
 
-<tr>
-    <th>ID</th>
-    <th>Nombre</th>
-    <th>Marca</th>
-    <th>Cantidad</th>
-    <th>Bodega</th>
-    <th>Acciones</th>
-</tr>
+    </div>
 
-<?php while($row = $resultado->fetch_assoc()) { ?>
+    <div class="tabla-container">
 
-<tr>
+        <table>
 
-<td><?= $row['id'] ?></td>
-<td><?= $row['nombre'] ?></td>
-<td><?= $row['marca'] ?></td>
-<td><?= $row['cantidad'] ?></td>
-<td><?= $row['bodega'] ?></td>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Marca</th>
+                <th>Cantidad</th>
+                <th>Bodega</th>
+                <th>Acciones</th>
+            </tr>
 
-<td>
+            <?php while($row = $resultado->fetch_assoc()) { ?>
 
-<a class="btn editar"
-href="editar.php?id=<?= $row['id'] ?>">
-Editar
-</a>
+            <tr>
 
-<a class="btn eliminar"
-href="?eliminar=<?= $row['id'] ?>"
-onclick="return confirm('¿Quieres Eliminar artículo?')">
-Eliminar
-</a>
+                <td><?= $row['id'] ?></td>
+                <td><?= $row['nombre'] ?></td>
+                <td><?= $row['marca'] ?></td>
+                <td>
+                    <span class="cantidad">
+                        <?= $row['cantidad'] ?>
+                    </span>
+                </td>
 
-</td>
+                <td>
+                    <span class="bodega">
+                        <?= $row['bodega'] ?>
+                    </span>
+                </td>
 
-</tr>
+                <td class="acciones">
 
-<?php } ?>
+                    <a class="btn editar"
+                    href="editar.php?id=<?= $row['id'] ?>">
+                    ✏ Editar
+                    </a>
 
-</table>
+                    <a class="btn eliminar"
+                    href="?eliminar=<?= $row['id'] ?>"
+                    onclick="return confirm('¿Eliminar artículo?')">
+                    🗑 Eliminar
+                    </a>
+
+                </td>
+
+            </tr>
+
+            <?php } ?>
+
+        </table>
+
+    </div>
 
 </div>
 
