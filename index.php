@@ -18,6 +18,7 @@ $resultado = $conn->query("SELECT * FROM articulos ORDER BY id DESC");
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -29,24 +30,29 @@ $resultado = $conn->query("SELECT * FROM articulos ORDER BY id DESC");
 
 <body>
 
-<div class="background"></div>
-
 <div class="container">
+
+    <!-- HEADER -->
 
     <div class="header">
 
         <div>
+
             <h1>📦 Sistema Inventario</h1>
+
             <p class="subtitulo">
-                Gestión moderna de artículos y bodegas
+                Administración moderna de artículos y bodegas
             </p>
+
         </div>
 
         <a href="crear.php" class="btn nuevo">
-            + Nuevo Artículo
+            ➕ Nuevo Artículo
         </a>
 
     </div>
+
+    <!-- TABLA -->
 
     <div class="tabla-container">
 
@@ -66,8 +72,11 @@ $resultado = $conn->query("SELECT * FROM articulos ORDER BY id DESC");
             <tr>
 
                 <td><?= $row['id'] ?></td>
+
                 <td><?= $row['nombre'] ?></td>
+
                 <td><?= $row['marca'] ?></td>
+
                 <td>
                     <span class="cantidad">
                         <?= $row['cantidad'] ?>
@@ -80,18 +89,22 @@ $resultado = $conn->query("SELECT * FROM articulos ORDER BY id DESC");
                     </span>
                 </td>
 
-                <td class="acciones">
+                <td>
 
-                    <a class="btn editar"
-                    href="editar.php?id=<?= $row['id'] ?>">
-                    ✏ Editar
-                    </a>
+                    <div class="acciones">
 
-                    <a class="btn eliminar"
-                    href="?eliminar=<?= $row['id'] ?>"
-                    onclick="return confirm('¿Eliminar artículo?')">
-                    🗑 Eliminar
-                    </a>
+                        <a class="btn editar"
+                        href="editar.php?id=<?= $row['id'] ?>">
+                        ✏ Editar
+                        </a>
+
+                        <a class="btn eliminar"
+                        href="?eliminar=<?= $row['id'] ?>"
+                        onclick="return confirm('¿Eliminar artículo?')">
+                        🗑 Eliminar
+                        </a>
+
+                    </div>
 
                 </td>
 
